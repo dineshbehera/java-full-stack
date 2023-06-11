@@ -1,0 +1,26 @@
+
+<div class="container card">
+  <div class="">
+    <h1>Users</h1>
+    <button class="btn btn-primary">Add User</button>
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+
+      <tbody>
+      <tr *ngFor="let user of users" >
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td><button type="button" class="btn btn-primary">Show Details</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+ 
+
+
