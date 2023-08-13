@@ -63,11 +63,10 @@ metadata:
 spec:
   selector:
     app: book-store-be
+  type: NodePort
   ports:
   - port: 80
     targetPort: 8080
-  type: NodePort
-
----
+    nodePort: 32000
 
 

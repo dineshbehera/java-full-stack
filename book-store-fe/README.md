@@ -51,3 +51,36 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Get IP address from `minikube ip`
 <br> open the brower http://IP:port
+
+## Ingress
+For ingress setup follow these steps [https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
+<br>
+
+Verify the Service(s) are created and available on a node port : `kubectl -n dev get svc` <br>
+
+Visit the Service via NodePort: `minikube -n dev service << svc pod name>> --url` 
+
+`minikube -n dev service book-store-fe-svc --url` <br>
+Output is similar to : `http://192.168.49.2:31000`
+<br>
+
+You can now access the sample application via the Minikube IP address and NodePort. The next step lets you access the application using the Ingress resource. <br>
+
+
+Create ingress `kubectl apply -f k8-bs-ingress.yaml` <br>
+Verify ip address is set : `kubectl -n dev get ingress`
+
+
+Verify that the Ingress controller is directing traffic: `curl --resolve "bookstore.oned:80:$( minikube ip )" -i http://bookstore.oned`
+
+
+set the host file as below <br>
+`<< minikube ip>> bookstore.oned` <br>
+in linux `sudo nano /etc/hosts` <br>
+
+After you make this change, your web browser sends requests for `bookstore.oned` URLs to Minikube.
+
+
+
+
+

@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: book-store-ingress
+  namespace: dev
+  labels:
+    name: book-store-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: bookstore.oned
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"                   # http://localhost:4200/users
+        backend:
+          service:
+            name: book-store-fe-svc
+            port: 
+              number: 80
+  - host: api.bookstore.oned
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"                   # http://localhost:4200/users
+        backend:
+          service:
+            name: book-store-be-svc
+            port: 
+              number: 8080

@@ -24,9 +24,11 @@ docker pull <<image path>>
   `docker pull dineshbehera/book-store-be`
     <br>
   `docker run -d -p 8090:8080 --name book-store-be dineshbehera/book-store-be:1.0`
+
+   `docker run -d -p 8090:8080 --name book-store-be-local -e "SPRING_PROFILES_ACTIVE=local" dineshbehera/book-store-be:1.0`
 <br>
 Open 
-[http:localhost:8090](http:localhost:8090)
+[http:localhost:8090/api](http:localhost:8090/api)
 
 
 ### K8 Secrets

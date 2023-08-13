@@ -15,6 +15,6 @@ public class HomeController {
     @GetMapping("/")
 	public String home() {
 		LOGGER.info("request received GET home()");
-		return "Book store be ...running";
+		return "Book Store Backend service is running !";
 	}
 }

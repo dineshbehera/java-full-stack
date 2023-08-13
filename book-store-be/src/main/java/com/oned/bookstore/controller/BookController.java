@@ -20,7 +20,7 @@ import com.oned.bookstore.model.Book;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("books")
+@RequestMapping("/books")
 public class BookController {
 	
 	Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -28,7 +28,7 @@ public class BookController {
 	@Autowired
 	private BookRepository bookRepository;
 	
-	@GetMapping("/")
+	@GetMapping({"","/"})
 	public List<Book> getBooks() {
 		LOGGER.info("request received GET getBooks()");
 		return bookRepository.findAll();

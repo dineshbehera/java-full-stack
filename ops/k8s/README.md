@@ -1,4 +1,4 @@
-## Execute the files in the below sequence :
+## Execute the files in the below sequence or `kubectl apply -f .` :
 
 `kubectl apply -f k8-bs-configmap.yaml`
 
@@ -21,7 +21,23 @@ Check if all are running fine or not : `
 Get IP : `minikube ip` <br>
 
 
-Open http:// << IP Address >>:31000
+Open `http:// << IP Address >>:31000`
+
+Open `http:// << IP Address >>:32000/users/`
+
+Open `http:// << IP Address >>:32000/books/`
+
+`http://bookstore.oned/`
+`http://api.bookstore.oned/users/`
+`http://api.bookstore.oned/books/`
+
+`kubectl -n dev get svc`
+
+
+`minikube -n dev service book-store-be-svc --url`
+
+`minikube -n dev service book-store-fe-svc --url`
+
 
 ## Delete all pods
 

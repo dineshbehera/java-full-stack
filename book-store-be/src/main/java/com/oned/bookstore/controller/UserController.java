@@ -27,7 +27,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping("/")
+	@GetMapping({"","/"})
 	public List<User> getUsers() {
 		LOGGER.info("request received GET getUsers()");
 		return userRepository.findAll();
