@@ -25,3 +25,29 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Docker
+
+`ng build`
+
+`docker build -t dineshbehera/book-store-fe:1.0 .`
+
+`docker run --rm -it -p 8080:80 dineshbehera/book-store-fe:1.0`
+
+`docker push dineshbehera/book-store-fe:1.0`
+
+## kubernetes
+
+`kubectl apply -f k8-bsfe-deployment.yaml`
+
+`kubectl -n dev get deployments`
+
+`kubectl -n dev get svc`
+
+`kubectl -n dev get pods`
+
+<br> Get the port number from the svc (if nodePort is mentioned in teh svc then that is thye port#)
+`kubectl -n dev get svc -o wide`  <br>
+
+Get IP address from `minikube ip`
+<br> open the brower http://IP:port

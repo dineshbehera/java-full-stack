@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.17.02:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+
+  jackson:
+        serialization:
+            fail-on-empty-beans: false
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: always

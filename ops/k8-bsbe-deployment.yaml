@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-store-be-dep
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: book-store-be
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: book-store-be
+    spec:
+      containers:
+      - name: book-store-be
+        image: dineshbehera/book-store-be:1.0
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "1024m"
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: bs-config
+                key: "db.host"
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: bs-config
+                key: "db.port"
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: bs-config
+                key: "db.name"
+          - name: DB_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: bs-config
+                key: "db.username"
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: bs-secrets
+                key: "db.password"
+          - name: MYSQL_DIALECT
+            valueFrom:
+              configMapKeyRef:
+                name: bs-config
+                key: "db.dialect"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-store-be-svc
+  namespace: dev
+spec:
+  selector:
+    app: book-store-be
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: NodePort
+
+---
+
+
