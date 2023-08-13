@@ -21,7 +21,7 @@ Check if all are running fine or not : `
 Get IP : `minikube ip` <br>
 
 
-Open http://<<IP>>:<<PORT>>
+Open http:// << IP Address >>:31000
 
 ## Delete all pods
 
