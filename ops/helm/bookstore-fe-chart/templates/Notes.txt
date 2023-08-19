@@ -1,0 +1,2 @@
+servicename=$(k get service -l "app=myhelmapp" -o jsonpath=".items[0]".metadata.name}")
+kubectl port-forward service/myhelpapp 8088:80 --namespace dev
